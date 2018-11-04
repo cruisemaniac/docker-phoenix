@@ -9,7 +9,8 @@ RUN mix local.hex --force \
  && apt-get install -y nodejs \
  && apt-get install -y build-essential \
  && apt-get install -y inotify-tools \
- && mix local.rebar --force
+ && mix local.rebar --force \
+ && npm install -g brunch
 
 ENV APP_HOME /app
 RUN mkdir -p $APP_HOME

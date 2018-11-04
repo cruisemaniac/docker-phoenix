@@ -10,5 +10,21 @@ services:
       - ./src:/app
     depends_on:
       - db
+  #   links:
+  #     - rethinkdb:localhost
   db:
-    image: postgres:10
+    image: postgres:9.4
+    volumes:
+      - ./postgres_data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: leather
+      POSTGRES_PASSWORD: ""
+      POSTGRES_DB: leather_dev
+  # rethinkdb:
+  #   image: rethinkdb
+  #   volumes:
+  #     - ".:/data"
+  #   ports:
+  #     - "8080:8080"
