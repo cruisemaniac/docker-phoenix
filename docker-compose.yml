@@ -12,19 +12,31 @@ services:
       - db
   #   links:
   #     - rethinkdb:localhost
-  db:
-    image: postgres:9.4
-    volumes:
-      - ./postgres_data:/var/lib/postgresql
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: leather
-      POSTGRES_PASSWORD: ""
-      POSTGRES_DB: leather_dev
+  # db:
+  #   image: postgres:9.4
+  #   volumes:
+  #     - ./data:/var/lib/postgresql
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     POSTGRES_USER: leather
+  #     POSTGRES_PASSWORD: ""
+  #     POSTGRES_DB: leather_dev
   # rethinkdb:
   #   image: rethinkdb
   #   volumes:
   #     - ".:/data"
   #   ports:
   #     - "8080:8080"
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: default
+      MYSQL_USER: default
+      MYSQL_PASSWORD: secret
+
